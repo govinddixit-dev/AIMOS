@@ -286,7 +286,7 @@ aimos-backend/
 
 ## 5. Phase-Wise Execution Plan
 
-### Phase 0 — Discovery & Foundation (Weeks 1–3)
+### Phase 0 — Discovery & Foundation 
 
 | Activity | Details | Deliverable |
 |---|---|---|
@@ -297,7 +297,7 @@ aimos-backend/
 | API Contract Design | OpenAPI specs for all endpoints across 12 modules | Swagger/OpenAPI documentation (v1 draft) |
 | Third-Party API Access | Obtain API keys for Meta, Google, Stripe, OpenAI, etc. | Verified API credentials & sandbox accounts |
 
-### Phase 1 — Core Platform & MVP (Weeks 4–12)
+### Phase 1 — Core Platform & MVP 
 
 > **Goal:** Deliver a functional platform where an SME can sign up, create a campaign with AI-generated creatives, approve it, pay, and have it published.
 
@@ -311,7 +311,7 @@ aimos-backend/
 
 **Phase 1 Deliverable:** Working MVP with end-to-end campaign lifecycle.
 
-### Phase 2 — Engagement, Intelligence & Analytics (Weeks 13–20)
+### Phase 2 — Engagement, Intelligence & Analytics 
 
 | Week | Sprint Focus | Modules / Features |
 |---|---|---|
@@ -322,7 +322,7 @@ aimos-backend/
 
 **Phase 2 Deliverable:** Full lead-to-customer lifecycle automation.
 
-### Phase 3 — Intelligence, Optimization & Scaling (Weeks 21–26)
+### Phase 3 — Intelligence, Optimization & Scaling
 
 | Week | Sprint Focus | Modules / Features |
 |---|---|---|
@@ -333,7 +333,7 @@ aimos-backend/
 
 **Phase 3 Deliverable:** Self-optimizing, intelligent marketing platform.
 
-### Phase 4 — Hardening, QA & Pre-Launch (Weeks 27–30)
+### Phase 4 — Hardening, QA & Pre-Launch 
 
 | Week | Sprint Focus | Activities |
 |---|---|---|
@@ -344,7 +344,7 @@ aimos-backend/
 
 **Phase 4 Deliverable:** Production-ready, security-audited platform.
 
-### Phase 5 — Launch & Stabilization (Weeks 31–34)
+### Phase 5 — Launch & Stabilization 
 
 | Week | Activity | Details |
 |---|---|---|
