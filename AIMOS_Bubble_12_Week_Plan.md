@@ -1,5 +1,5 @@
 # AIMOS – AI Marketing Operating System
-## Bubble.io No-Code Development Plan of Action
+## Bubble.io No-Code Development Plan — Web & Native Mobile (iOS + Android)
 ### 12-Week Execution Plan | Version 1.0 | March 2026
 
 ---
@@ -33,7 +33,9 @@
 
 This Plan of Action is a **dedicated execution blueprint for building AIMOS on Bubble.io** — the no-code path recommended in BRD Section 8. It covers how to implement all 12 AI modules using Bubble.io's visual development environment, native database, plugin ecosystem, and API connector — without writing traditional backend code.
 
-> **Scope Note:** This plan assumes Bubble.io handles **both frontend and backend** in a single platform. All business logic, data storage, user management, and API orchestration are built inside Bubble.
+This plan delivers AIMOS as both a **web application** and **native mobile apps** (iOS App Store + Android Play Store) using Bubble.io's native mobile app builder. Users will access AIMOS on any device — browser or native app — with full push notifications, camera access, and biometric login on mobile.
+
+> **Scope Note:** This plan assumes Bubble.io handles **both frontend and backend** in a single platform. All business logic, data storage, user management, and API orchestration are built inside Bubble. The same Bubble app is published as web, iOS, and Android with shared logic and data.
 
 > **Timeline Note:** This plan uses a **12-week cadence** — providing adequate time for thorough development, dedicated QA cycles, and buffer for integration testing, reducing risk and improving launch quality compared to aggressive compressed timelines.
 
@@ -67,6 +69,10 @@ The BRD (Section 8) explicitly recommends the following No-Code stack:
 | **Repeating Groups** | Dynamic data-driven lists and dashboards |
 | **Stripe plugin (native)** | Subscriptions and one-time payments built-in |
 | **Responsive design engine** | Mobile-first layouts without code |
+| **Native mobile app builder** | Publish directly to iOS App Store + Google Play Store — same Bubble app, no extra framework |
+| **Push notifications (FCM + APNs)** | Instant alerts for leads, campaign status, and approvals on iOS and Android |
+| **Camera / photo access** | Capture product photos from device camera for AI creative generation |
+| **Biometric authentication** | Face ID / fingerprint login for secure, frictionless mobile access |
 | **Fast time-to-market** | MVP achievable in 8–12 weeks vs 16–24 weeks with code |
 | **Lower development cost** | Fewer developers needed, faster iteration |
 
@@ -91,6 +97,11 @@ The BRD (Section 8) explicitly recommends the following No-Code stack:
 | Admin panels | ✅ Conditional visibility + admin role |
 | Webhooks (inbound) | ✅ API Workflow endpoints |
 | Multi-tenant data isolation | ✅ Data privacy rules per role |
+| Native iOS + Android apps | ✅ Bubble native mobile app builder |
+| Push notifications | ✅ Built-in FCM (Android) + APNs (iOS) integration |
+| Camera / photo picker | ✅ Native device camera access in mobile app |
+| Biometric login (Face ID / fingerprint) | ✅ Mobile builder native auth feature |
+| App Store / Play Store publishing | ✅ Direct publish from Bubble dashboard |
 
 ### 3.2 What Requires Plugins or Workarounds
 
@@ -133,11 +144,14 @@ The BRD (Section 8) explicitly recommends the following No-Code stack:
 - Real-time Analytics Dashboard (charts, KPIs)
 - AI Optimization Engine (scheduled workflows)
 - GDPR-compliant data handling (privacy rules, data deletion)
+- Native iOS app (App Store) + Android app (Play Store) via Bubble mobile builder
+- Push notifications for leads, campaign alerts, approvals, and engagement
+- Camera integration for product photo capture in AI creatives
+- Biometric authentication (Face ID / fingerprint) on mobile
 
 ### 4.2 Out-of-Scope
 
 - Custom server-side code (no Node.js/Python)
-- Native mobile apps (iOS/Android) — Bubble is web only; responsive web covers mobile browser
 - TikTok Ads (Phase 2)
 - AI Influencer Marketing module
 - Predictive ROI ML model (Phase 2 — requires custom code)
@@ -154,10 +168,14 @@ The BRD (Section 8) explicitly recommends the following No-Code stack:
 │                        BUBBLE.IO PLATFORM                                 │
 │                                                                           │
 │  ┌─────────────────────────────────────────────────────────────────────┐  │
-│  │                     FRONTEND (Bubble Pages)                         │  │
+│  │           FRONTEND (Bubble Pages + Native Mobile App)               │  │
 │  │                                                                     │  │
-│  │  Admin Portal    Agency Dashboard    End Customer Landing Pages     │  │
-│  │  (Page: /admin)  (Page: /dashboard)  (Page: /lp/:id)               │  │
+│  │  Web Browser              iOS App (App Store)  Android App (Play)  │  │
+│  │  Admin Portal             Agency Dashboard     Push Notifications   │  │
+│  │  (Page: /admin)           (Page: /dashboard)   (Page: /lp/:id)      │  │
+│  │                                                                     │  │
+│  │  ←── Responsive Web ─────────────────────────────────────────────→  │  │
+│  │  ←── Native Mobile App (same Bubble codebase, iOS + Android) ─────→ │  │
 │  └──────────────────────────┬──────────────────────────────────────────┘  │
 │                             │                                             │
 │  ┌──────────────────────────▼──────────────────────────────────────────┐  │
@@ -211,6 +229,13 @@ The BRD (Section 8) explicitly recommends the following No-Code stack:
 | `/admin/users` | Admin | User management |
 | `/admin/analytics` | Admin | Platform-wide analytics |
 | `/admin/billing` | Admin | Billing oversight |
+| **Mobile-Only Screens** | | |
+| Splash Screen | All | App launch screen with AIMOS branding |
+| Onboarding (mobile) | New Users | Swipeable welcome intro (3 screens) |
+| Push Notification Center | Agency/SME | In-app notification history and settings |
+| Camera Capture Screen | Agency/SME | Capture product photos for AI creative generation |
+| Biometric Login Prompt | All | Face ID / fingerprint authentication screen |
+| Bottom Tab Bar (Nav) | Agency/SME | Home / Campaigns / Leads / Analytics / Profile |
 
 ### 5.3 Bubble Workflow Architecture Pattern (for AI Jobs)
 
@@ -250,7 +275,12 @@ Display creatives to user   →  User selects and approves
 | Meta Business Manager + App Review submitted | Client | ✅ In progress |
 | Google Ads Developer Token obtained | Client | ✅ Ready |
 | WhatsApp Business API approval submitted | Client | ✅ In progress |
-| Figma mockups for all 18 pages approved | Designer | ✅ Ready |
+| **Apple Developer Account ($99/year) enrolled** | Client | ✅ Ready |
+| **Google Play Developer Account ($25 one-time) enrolled** | Client | ✅ Ready |
+| **Bubble mobile plan (includes mobile builder) activated** | Client | ✅ Ready |
+| **APNs certificate generated** (for iOS push notifications) | Client + Apple | ✅ Ready |
+| **Firebase project + FCM credentials** ready (for Android push) | Client | ✅ Ready |
+| Figma mockups for all 18 pages + mobile screens approved | Designer | ✅ Ready |
 | Bubble.io Team plan ($349/mo) purchased | Client | ✅ Ready |
 | Full team (7 members) onboarded and available | PM | ✅ Ready |
 
@@ -529,17 +559,24 @@ Display creatives to user   →  User selects and approves
 - Performance testing — simulate multi-user load, monitor Bubble capacity dashboard
 - Full regression test across all 12 modules (every workflow, every page, every role)
 - Cross-device testing (mobile, tablet, desktop) on all critical pages
+- **Physical device testing on iPhone** (latest + iPhone 12 minimum) and **Android** (Pixel 8 + Samsung Galaxy S24)
+- **App Store submission prep** — screenshots (6.7”, 6.1”, iPad), app description, icon, privacy labels, keyword list
+- **Play Store submission prep** — feature graphic (1024×500px), content rating questionnaire, data safety section
+- **TestFlight internal distribution** setup — invite QA team and client stakeholders for iOS early testing
+- **Push notification delivery testing** on real physical devices (iOS + Android)
 - Bug logging, categorization (P0/P1/P2), and assignment
 - Fix all P0 and P1 bugs identified during regression
-- Designer performs final responsive QA and design polish across all pages
+- Designer performs final responsive QA and design polish across all pages and mobile screens
 
 **Deliverables:**
 - Security audit report (privacy rules, auth, webhook verification)
 - Performance optimization applied (pagination, search constraints, caching)
-- Full regression test results documented
+- Full regression test results documented (web + mobile)
+- App Store + Play Store submission assets prepared
+- TestFlight internal build distributed to client
 - All P0/P1 bugs fixed
 
-**Sign-Off Criteria:** No cross-tenant data leaks; all API endpoints authenticated; page load under 3 seconds; all 12 modules pass regression; zero P0 bugs remaining.
+**Sign-Off Criteria:** No cross-tenant data leaks; all API endpoints authenticated; page load under 3 seconds; all 12 modules pass regression on web and mobile; zero P0 bugs remaining; TestFlight build accepted by Apple.
 
 ---
 
@@ -549,17 +586,20 @@ Display creatives to user   →  User selects and approves
 
 **Focus Areas:**
 - Client UAT kickoff — walk through all 12 modules live + hand off test credentials
+- **Client UAT via TestFlight** (iOS) + Google Play Internal Testing (Android) on real devices
 - Support UAT — answer client questions, reproduce and fix reported issues
 - Fix critical UAT bugs (P0/P1) immediately; fix P2 bugs within 48 hours
 - Custom domain setup (DNS CNAME, SSL verification via Bubble)
 - Switch all API keys from sandbox/test → production keys
 - Switch Stripe from test mode → live mode
 - Deploy Development branch → Live branch (create saved version snapshot first)
+- **Submit to Apple App Store Review** (expect 1–3 business day review window)
+- **Submit to Google Play Store Review** (expect 1–2 business day review window)
 - Set up UptimeRobot monitoring + Bubble capacity alerts
-- Full smoke test on Live branch — every module
+- Full smoke test on Live branch — every module (web + mobile)
 - Prepare handover documentation (Bubble editor structure, page map, workflow list)
-- Record demo video / walkthrough for client
-- **Production launch** — custom domain live, invite first batch of clients
+- Record demo video / walkthrough for client (web + mobile app demo)
+- **Production launch** — custom domain live, iOS App Store app published, Android Play Store app published, invite first batch of clients
 
 **Deliverables:**
 - Client UAT approved (sign-off document)
@@ -567,10 +607,12 @@ Display creatives to user   →  User selects and approves
 - Production domain live with SSL
 - Stripe live mode active
 - Monitoring configured (UptimeRobot + Bubble capacity alerts)
-- Handover documentation + demo video
-- First clients onboarded
+- **iOS app live on Apple App Store** (publicly downloadable)
+- **Android app live on Google Play Store** (publicly downloadable)
+- Handover documentation + demo video (web + mobile)
+- First clients onboarded on all platforms (web, iOS, Android)
 
-**Sign-Off Criteria:** Client signs off on UAT; all API keys are production; custom domain resolves with SSL; Stripe processes live payments; monitoring alerts configured; platform publicly accessible.
+**Sign-Off Criteria:** Client signs off on UAT; all API keys are production; custom domain resolves with SSL; Stripe processes live payments; monitoring alerts configured; web platform publicly accessible; iOS app approved and live on App Store; Android app approved and live on Play Store.
 
 ---
 
@@ -829,10 +871,12 @@ Bubble developers should be proficient in:
 ### 11.1 Design Principles
 
 1. **Mobile-First:** All pages designed for 390px (iPhone) first, scaled to desktop
-2. **10-Minute Campaign:** Wizard-style UX — 5 steps max to launch a campaign
-3. **Consistency:** Bubble reusable elements (header, nav, cards, buttons) for uniform UI
-4. **AI-Guided:** AI recommendations pre-fill fields to reduce cognitive load
-5. **Fast Load:** Minimize data loaded on page open; use pagination and lazy loading
+2. **Native Mobile Patterns:** Bottom tab bar navigation on the app (not sidebar); thumb-friendly tap targets (min 44×44 pt); swipe gestures for wizard steps; pull-to-refresh on list screens
+3. **10-Minute Campaign:** Wizard-style UX — 5 steps max to launch a campaign (works identically on web and mobile)
+4. **Consistency:** Bubble reusable elements (header, nav, cards, buttons) for uniform UI across web and native mobile
+5. **AI-Guided:** AI recommendations pre-fill fields to reduce cognitive load
+6. **Fast Load:** Minimize data loaded on page open; use pagination and lazy loading
+7. **Platform-Aware:** Conditionally show bottom tab bar (mobile app) vs. sidebar nav (web) using Bubble’s platform detection
 
 ### 11.2 Bubble Design System Setup
 
@@ -886,7 +930,20 @@ Since Bubble has no unit testing framework, QA is primarily **manual with struct
 | **Load Testing** | Bubble's capacity monitor + manual multi-user simulation | Key workflows under concurrent use |
 | **Webhook Testing** | ngrok for local testing; Stripe CLI for Stripe webhooks | Stripe, Meta, WhatsApp webhooks |
 
-### 12.2 Quality Gates Per Phase
+### 12.2 Mobile Device Test Matrix
+
+| Device | OS | Form Factor | Priority |
+|---|---|---|---|
+| iPhone 15 Pro | iOS 17 | 6.1" | P0 — latest flagship |
+| iPhone 12 | iOS 16 | 6.1" | P0 — minimum supported |
+| iPad Air | iPadOS 17 | 10.9" | P1 — tablet layout |
+| Samsung Galaxy S24 | Android 14 | 6.2" | P0 — latest Android |
+| Google Pixel 8 | Android 14 | 6.2" | P0 — stock Android |
+| Samsung Galaxy A14 | Android 13 | 6.6" | P1 — low-end Android |
+
+---
+
+### 12.3 Quality Gates Per Phase
 
 Each phase must pass before proceeding:
 - [ ] All workflows complete without errors in debug mode
@@ -928,7 +985,33 @@ Each phase must pass before proceeding:
 - Create a **saved version** (snapshot) before every major release
 - Enable **automatic database backups** (Team plan and above)
 
-### 13.4 Environment Strategy
+### 13.4 App Store & Play Store Publishing
+
+**Apple App Store (iOS):**
+```
+1. Configure app in Bubble’s Mobile App Builder (name, icon 1024×1024, splash screen)
+2. Add APNs certificate (push notifications) in Bubble mobile settings
+3. Export .ipa or use Bubble’s direct App Store Connect submission
+4. Fill in App Store listing: name, subtitle, description, screenshots (6.7" + 6.1" + iPad), keywords
+5. Set privacy labels: data types collected (email, usage data, identifiers)
+6. Submit for App Store Review (1–3 business days)
+7. Bubble content updates reflect in-app without re-submission
+```
+
+**Google Play Store (Android):**
+```
+1. Build .aab in Bubble’s Mobile App Builder
+2. Add Firebase FCM credentials for push notifications in Bubble settings
+3. Upload .aab to Google Play Console → create new app entry
+4. Fill in store listing: title, description, feature graphic (1024×500px), screenshots
+5. Complete content rating questionnaire + data safety section
+6. Set up testing tracks: Internal → Closed → Open → Production
+7. Submit for Play Store Review (1–2 business days typical)
+```
+
+---
+
+### 13.5 Environment Strategy
 
 | Environment | Branch | Access |
 |---|---|---|
@@ -979,6 +1062,7 @@ Each phase must pass before proceeding:
 | R8 | **Slow page loads with large data sets** | Medium | Medium | Implement pagination; use server-side search constraints; pre-compute aggregate counts |
 | R9 | **Bubble vendor lock-in** | Low | Medium | Document all data types and API integrations thoroughly; maintain data export capability for future migration |
 | R10 | **Third-party API approval delays** (Meta App Review, WhatsApp Business API) | Medium | High | Submit approvals early (prerequisites); build module UI/logic first, connect live API when approved; have sandbox fallbacks |
+| R11 | **App Store / Play Store review rejection** | Low | High | Follow Apple HIG + Google Play policies strictly; test on physical devices before submission; maintain rejection buffer in Week 12; ensure privacy policy + data safety sections are complete and accurate |
 
 ---
 
@@ -997,7 +1081,7 @@ Each phase must pass before proceeding:
 | **M8 — Modules 10–11** | End of Week 9 | AI Optimization Engine, AI Growth Planner | Campaigns self-optimize; AI growth reports generate |
 | **M9 — Module 12 + GDPR** | End of Week 10 | AI Dashboard, GDPR compliance | All 12 modules complete; GDPR flows verified |
 | **M10 — QA & Security** | End of Week 11 | Security audit, performance optimization, full regression | Zero P0 bugs; no data leaks; pages load under 3s |
-| **M11 — Production Launch 🚀** | End of Week 12 | UAT approved, production domain live, first clients onboarded | Platform publicly accessible with all 12 modules functional |
+| **M11 — Production Launch 🚀** | End of Week 12 | UAT approved, production domain live, **iOS App Store app live**, **Android Play Store app live**, first clients onboarded | Web platform publicly accessible + iOS app downloadable from App Store + Android app downloadable from Play Store with all 12 modules functional |
 
 ---
 
@@ -1025,7 +1109,7 @@ Each phase must pass before proceeding:
 
 > **Total estimated running cost (at launch):** ~$1,500–$3,500/month platform + API costs, before ad spend.
 
-### 17.3 Team Cost Estimate (12 Weeks)
+<!-- ### 17.3 Team Cost Estimate (12 Weeks)
 
 | Role | Count | Rate Range (Weekly) | 12-Week Cost |
 |---|---|---|---|
@@ -1037,7 +1121,7 @@ Each phase must pass before proceeding:
 | QA Tester | 1 | $800–$1,500 | $9,600–$18,000 |
 | **Total Team** | **7** | | **$112,800–$192,000** |
 
----
+--- -->
 
 ## 18. Bubble.io Limitations & When to Migrate to Custom Code
 
@@ -1106,7 +1190,7 @@ This lets you keep Bubble for rapid UI development while offloading compute-heav
 
 1. Client will use Bubble.io's official hosted cloud (not self-hosted)
 2. All AI capabilities will be delivered via third-party APIs (no custom model training)
-3. The platform is web-first; native mobile apps are not in scope
+3. The platform will be delivered as both a **web application** and **native mobile apps** (iOS + Android) using Bubble.io’s native mobile app builder
 4. Bubble.io's Team plan will be sufficient for development and initial launch capacity
 5. Client provides all API credentials and sandbox accounts for third-party services
 6. Design mockups will be provided in Figma and implemented in Bubble by the dev team
@@ -1126,6 +1210,12 @@ This lets you keep Bubble for rapid UI development while offloading compute-heav
 | WhatsApp Business API Approval | Meta / Client | WhatsApp features deferred |
 | Custom Domain & DNS Access | Client | Custom domain setup blocked |
 | OpenAI API Key & Billing | Client | All AI modules blocked |
+| Apple Developer Account Enrollment | Client | iOS App Store submission blocked |
+| Google Play Developer Account | Client | Android Play Store submission blocked |
+| Apple App Store Review Approval | Apple | iOS public launch delayed (1–3 business days) |
+| Google Play Store Review Approval | Google | Android public launch delayed (1–2 business days) |
+| APNs Certificate (iOS push notifications) | Client + Apple | iOS push notifications blocked |
+| Firebase FCM Credentials (Android push) | Client | Android push notifications blocked |
 
 ---
 
